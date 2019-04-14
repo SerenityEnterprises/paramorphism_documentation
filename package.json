@@ -1,0 +1,14 @@
+{
+  "name": "citadel_docs",
+  "version": "1.0.0",
+  "description": "Documentation and usage guide for the Citadel distribution platform",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "dependencies": {
+    "vuepress": "^1.0.0-alpha.44"
+  }
+}
