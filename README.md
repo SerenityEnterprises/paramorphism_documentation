@@ -29,8 +29,13 @@ Further configuration parameters are specified in the 'Configuration' portion of
 
 ## Limitations
 
-Java obfuscation in general can inhibit certain functionality in a program. For instance, name remapping can break reflection calls which hardcode
-element names, for instance `Class.forName("com.example.HelloWorldPrinterFactory")` can return a `ClassNotFoundException` after obfuscation, since the `HelloWorldPrinterFactory` will be named something like `a.a.c`. Please keep this in mind when developing an application which will be eventually obfuscated, and perform thorough testing post-obfuscation.
+Java obfuscation in general can inhibit certain functionality in a program.
+
+For instance, name remapping can break reflection calls which hardcode element names.
+
+For example, `Class.forName("com.example.HelloWorldPrinterFactory")` can return a `ClassNotFoundException` after obfuscation, since the `HelloWorldPrinterFactory` will be named something like `a.a.c`.
+
+Please keep this in mind when developing an application which will be eventually obfuscated, and perform thorough testing post-obfuscation.
 
 ## Report Issues
 

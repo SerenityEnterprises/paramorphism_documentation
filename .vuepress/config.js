@@ -1,5 +1,5 @@
 module.exports = {
-    title: "Paramorphism",
+    title: "Paramorphism Docs",
     description: "A fast, flexible, and modern obfuscator for Java and Kotlin.",
 
     themeConfig: {
