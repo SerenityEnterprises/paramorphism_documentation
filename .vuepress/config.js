@@ -1,5 +1,3 @@
-const glob = require('glob')
-
 module.exports = {
     title: "Paramorphism",
     description: "A fast, flexible, and modern obfuscator for Java and Kotlin.",
