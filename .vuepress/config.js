@@ -1,5 +1,7 @@
+const glob = require('glob')
+
 module.exports = {
-    title: "Paramorphism Documentation",
+    title: "Paramorphism",
     description: "A fast, flexible, and modern obfuscator for Java and Kotlin.",
 
     themeConfig: {
@@ -7,7 +9,16 @@ module.exports = {
             { text: 'Paramorphism', link: 'https://paramorphism.serenity.enterprises/' }
         ],
 
-        sidebar: 'auto',
+        sidebar: [
+            '/changelog/',
+
+            '/',
+            '/docs/configuration'
+        ],
         sidebarDepth: 4
+    },
+
+    plugins: {
+        'seo': {}
     }
 }

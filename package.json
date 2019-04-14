@@ -10,5 +10,9 @@
   },
   "dependencies": {
     "vuepress": "^1.0.0-alpha.44"
+  },
+  "devDependencies": {
+    "vuepress-dir-sidebar": "^0.1.8",
+    "vuepress-plugin-seo": "^0.1.2"
   }
 }
