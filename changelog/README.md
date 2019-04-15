@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1-beta
+
+- Name generation dictionaries are now defined in the same manner as prefixes and suffixes.
+
+```yml
+# Old:
+name_generation:
+  dictionaries:
+    - alphabet
+    - classes
+    - alphabet
+    - alphabet
+
+# New:
+name_generation:
+  dictionaries:
+    all: alphabet
+    classes: enterprise
+```
+
 ## 1.0-beta
 
 This is a **complete** rewrite. Upgrading from b0.14 to 1.0-beta is not advised until the documentation is made up-to-date.

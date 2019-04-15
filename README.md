@@ -1,3 +1,7 @@
+---
+description: "Paramorphism is a fast, flexible, and modern obfuscator for the Java Virtual Machine."
+---
+
 # Introduction
 
 Paramorphism is an obfuscator for the Java Virtual Machine. It mainly supports Java and Kotlin at the present time, but theoretically should support any JVM language that does not rely too heavily on reflection or dynamic by-name dispatch.
