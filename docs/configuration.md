@@ -48,3 +48,29 @@ maven_libraries:
 In order for the remapper to function correctly, all libraries upon which
 the application depends need to be declared in the configuration file.
 :::
+
+## Element Masking
+
+An element mask defines which elements are to be included and excluded in an obfuscation pass. The global mask is defined by the `mask` entry in the configuration file, and controls which classes any obfuscation strategy can touch.
+
+Element masking has two concepts, *including* and *excluding*. By default, all elements are included. If any elements are defined in the mask's `include` list, then **only matching** elements are included. Then, any elements matching the `exclude` list are also excluded.
+
+An example of a use of exclusion masks is when there are classes which are subject to heavy reflection, for instance, field name introspection when using Java serializables or something like Gson.
+
+```yml
+mask:
+  include:
+    - com/example/myproject/
+    - org/business/proprietarylibrary/
+  exclude:
+    - com/example/myproject/beans/serializable/
+    - com/example/myproject/config/ConfigurationJSONBean
+```
+
+### Matching Rules
+
+`include` and `exclude` are lists of *matching rules*. This is a simple concept:
+
+- If the rule ends with `/`, it will match anything starting with the rule. For instance, the rule `path/rule/` matches `path/rule/one`, `path/rule/two`, but not `anything/else/asdf`
+- If the rule ends with `*`, it will act as a wildcard. For instance, the rule `wildcard/rule*` matches `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, but not `wildcard/anythingelse`
+- Otherwise, the rule matches anything identical to itself.
