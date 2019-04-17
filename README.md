@@ -10,6 +10,12 @@ Paramorphism is an obfuscator for the Java Virtual Machine. It mainly supports J
 
 Once you have built a Java application as a JAR file, you can feed the JAR to Paramorphism for use in obfuscation.
 
+Paramorphism is run against a configuration file.
+
+```sh
+java -jar paramorphism.jar path/to/config
+```
+
 Paramorphism supports two formats for configuration: YAML and JSON. In this documentation, we will be using YML files as sample configurations.
 
 Here is an example configuration for a basic 'Hello, World!' application:
