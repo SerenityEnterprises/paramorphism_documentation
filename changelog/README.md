@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1-beta-hotfix
+
+- Fixed a `VerifyError` when running a JAR that was remapped using a dictionary that has inflation set. (This actually happened to Paramorphism itself)
+- Fixed a potential access violation when using the strategies 'Method Call Indirection' or 'Field Access Indirection'
+
 ## 1.1-beta
 
 - Name generation dictionaries are now defined in the same manner as prefixes and suffixes.
