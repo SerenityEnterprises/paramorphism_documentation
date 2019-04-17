@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1-beta (yet to be released)
+## 1.1-beta
 
 (1.1-beta is a work in progress. Currently-implemented changes are documented here)
 
@@ -21,6 +21,12 @@ name_generation:
     all: alphabet
     classes: enterprise
 ```
+
+- **Hotfix:** Methods in annotation classes are no longer remapped.
+- The deterministic random seed can be altered using the `random_offset` config entry.
+- Name generation dictionaries are now shuffled. A way to enable/disable this will come in 1.2-beta.
+- The update checker has been slightly tweaked.
+- There is a new strategy: Field Access Indirection, which obscures field reads/writes to external classes.
 
 ## 1.0-beta
 
