@@ -2,8 +2,6 @@
 
 ## 1.1-beta
 
-(1.1-beta is a work in progress. Currently-implemented changes are documented here)
-
 - Name generation dictionaries are now defined in the same manner as prefixes and suffixes.
 
 ```yml
