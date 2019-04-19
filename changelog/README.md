@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2-beta
+
+- Fixed an issue where directories of libraries wouldn't be registered under Windows.
+- Add a configuration value `name_generation.shuffle` to toggle shuffling of name generation dictionaries.
+
+```yml
+name_generation:
+  shuffle: false # Disable shuffling
+```
+
 ## 1.1-beta-hotfix
 
 - Fixed a `VerifyError` when running a JAR that was remapped using a dictionary that has inflation set. (This actually happened to Paramorphism itself)
