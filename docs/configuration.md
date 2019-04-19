@@ -90,7 +90,7 @@ The 'corruption' flag instructs the obfuscator to emit a JAR file that is techni
 
 With this flag, most analysis tools are rendered non-functional, with the exception of those custom-made for Paramorphism obfuscation.
 
-### Anti Decompression
+### Anti-Decompression
 
 The 'anti decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
 
@@ -99,3 +99,34 @@ The 'anti decompression' flag tries to ensure that individual classes cannot be 
 The 'kotlin' flag instructs the obfuscator to enable specific obfuscation strategies for the Kotlin programming language. For example, a Kotlin-specific strategy might strip out debugging information that is unique to the Kotlin compiler.
 
 Presently, use of the `kotlin` flag can corrupt behaviour in programs that make use of the `kotlin-reflect` library. (Please note that regular Java reflection is unaffected by the flag.)
+
+## Strategies
+
+Individual strategies can be configured in Paramorphism.
+
+All strategies have at least two configurable properties: `enabled` and `mask`
+
+`enabled` determines whether the obfuscation strategy will be used in the obfuscation of the target program, and is a boolean. The default value of `enabled` is true for all obfuscation strategies, but some obfuscation strategies are gated by [configuration flags](#flags).
+
+`mask` is a local specific mask that defines which classes the obfuscation strategy will be applied to. Please note that exclusions from the global mask cannot be overridden by an inclusion from a local mask.
+
+Using the strategy 'Field Access Indirection' as an example, we set 'enabled' to true, and disable the strategy for a performance-critical class:
+
+```yml
+field_access_indirection:
+  enabled: true # Here for demonstration purposes; but true is the default
+  mask:
+    exclude:
+      - com/example/project/ASuperPerformanceCriticalClass
+```
+
+The following are the currently-existing strategies in Paramorphism:
+- `debug_info_scrubbing`
+- `kotlin_metadata_scrubbing`
+- `kotlin_intrinsics_concealment`
+- `remapper`
+- `method_call_indirection`
+- `field_access_indirection`
+- `string_indirection`
+
+As more strategies are implemented, it is likely that some will develop their own specific configurable parameters.
