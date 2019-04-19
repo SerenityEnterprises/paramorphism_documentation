@@ -74,3 +74,28 @@ mask:
 - If the rule ends with `/`, it will match anything starting with the rule. For instance, the rule `path/rule/` matches `path/rule/one`, `path/rule/two`, but not `anything/else/asdf`
 - If the rule ends with `*`, it will act as a wildcard. For instance, the rule `wildcard/rule*` matches `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, but not `wildcard/anythingelse`
 - Otherwise, the rule matches anything identical to itself.
+
+## Flags
+
+Flags are simple boolean toggles to change obfuscation behaviour.
+
+Currently, Paramorphism has the following flags implemented:
+- `corruption`
+- `anti_decompression`
+- `kotlin`
+
+### Corruption
+
+The 'corruption' flag instructs the obfuscator to emit a JAR file that is technically invalid, but executes anyway due to Java's lenient JAR parsing.
+
+With this flag, most analysis tools are rendered non-functional, with the exception of those custom-made for Paramorphism obfuscation.
+
+### Anti Decompression
+
+The 'anti decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
+
+### Kotlin
+
+The 'kotlin' flag instructs the obfuscator to enable specific obfuscation strategies for the Kotlin programming language. For example, a Kotlin-specific strategy might strip out debugging information that is unique to the Kotlin compiler.
+
+Presently, use of the `kotlin` flag can corrupt behaviour in programs that make use of the `kotlin-reflect` library. (Please note that regular Java reflection is unaffected by the flag.)
