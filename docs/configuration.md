@@ -149,7 +149,7 @@ name_generation:
     methods: ...
 ```
 
-## Dictionaries
+### Dictionaries
 
 There are currently four different dictionaries in Paramorphism:
 - `alphabet`
@@ -164,7 +164,7 @@ name_generation:
     classes: enterprise
 ```
 
-## Prefixes
+### Prefixes
 
 Prefixes are a constant string applied to the start of every generated name:
 
@@ -174,7 +174,7 @@ name_generation:
     classes: MyProjectClass
 ```
 
-## Suffixes
+### Suffixes
 
 Suffixes are a constant string applied to the end of every generated name:
 
@@ -184,6 +184,6 @@ name_generation:
     fields: "[]"
 ```
 
-## Inflation
+### Inflation
 
 In addition, the name generator can take an 'inflation' parameter. This generates a number of random extra name segments depending on the inflation value. For instance, the name 'a' with inflation 0 could be generated as 'fdgjia' with inflation 5.
