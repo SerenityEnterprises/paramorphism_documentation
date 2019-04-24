@@ -130,3 +130,60 @@ The following are the currently-existing strategies in Paramorphism:
 - `string_indirection`
 
 As more strategies are implemented, it is likely that some will develop their own specific configurable parameters.
+
+## Name Generation
+
+The name generator is used throughout the obfuscator, but its most obvious use is in the remapper. The name generator operates on four types of elements: Packages, classes, fields, and methods.
+
+There are three different name generation facets: Dictionaries, prefixes, and suffixes.
+
+A facet can be configured to act upon any of the element types like so:
+
+```yml
+name_generation:
+  [facet]:
+    all: ...
+    packages: ...
+    classes: ...
+    # fields: ... # Since fields is omitted, its value defaults to the value of 'all'
+    methods: ...
+```
+
+## Dictionaries
+
+There are currently four different dictionaries in Paramorphism:
+- `alphabet`
+- `alphabet_upper`
+- `java_keywords`
+- `enterprise`
+
+```yml
+name_generation:
+  dictionaries:
+    all: alphabet
+    classes: enterprise
+```
+
+## Prefixes
+
+Prefixes are a constant string applied to the start of every generated name:
+
+```yml
+name_generation:
+  prefixes:
+    classes: MyProjectClass
+```
+
+## Suffixes
+
+Suffixes are a constant string applied to the end of every generated name:
+
+```yml
+name_generation:
+  suffixes:
+    fields: "[]"
+```
+
+## Inflation
+
+In addition, the name generator can take an 'inflation' parameter. This generates a number of random extra name segments depending on the inflation value. For instance, the name 'a' with inflation 0 could be generated as 'fdgjia' with inflation 5.
