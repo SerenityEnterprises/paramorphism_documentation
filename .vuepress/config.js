@@ -1,22 +1,33 @@
 module.exports = {
-    title: "Paramorphism Docs",
-    description: "A fast, flexible, and modern obfuscator for Java and Kotlin.",
+  title: "Paramorphism",
 
-    themeConfig: {
+  locales: {
+    "/en/": {
+      lang: "en-GB",
+      title: "Paramorphism Docs",
+      description: "A fast, flexible, and modern obfuscator for Java and Kotlin.",
+    }
+  },
+
+  themeConfig: {
+    locales: {
+      "/en/": {
         nav: [
-            { text: 'Paramorphism', link: 'https://paramorphism.serenity.enterprises/' }
+          { text: 'Paramorphism', link: 'https://paramorphism.serenity.enterprises/' }
         ],
 
         sidebar: [
-            '/changelog/',
-
-            '/',
-            '/docs/configuration'
-        ],
-        sidebarDepth: 4
+          "/en/changelog",
+          "/en/",
+          "/en/configuration"
+        ]
+      }
     },
 
-    plugins: {
-        'seo': {}
-    }
+    sidebarDepth: 4
+  },
+
+  plugins: {
+    'seo': {}
+  }
 }
