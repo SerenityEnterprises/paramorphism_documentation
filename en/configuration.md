@@ -4,7 +4,7 @@
 
 `input` defines the path where the target artifact can be found, while `output` declares where the obfuscated output will be emitted.
 
-These paths are either relative to the location of the configuration file or absolute, depending on if the class starts with an absolute base path (e.g. `/` on sane operating systems, or a drive letter à la `C:/` on Windows).
+These paths are either relative to the location of the configuration file or absolute, depending on if the class starts with an absolute base path (e.g. `/` on sane operating systems, or a drive letter Ã  la `C:/` on Windows).
 
 **Example:**
 
@@ -53,7 +53,7 @@ the application depends need to be declared in the configuration file.
 
 An element mask defines which elements are to be included and excluded in an obfuscation pass. The global mask is defined by the `mask` entry in the configuration file, and controls which classes any obfuscation strategy can touch.
 
-Element masking has two concepts, *including* and *excluding*. By default, all elements are included. If any elements are defined in the mask's `include` list, then **only matching** elements are included. Then, any elements matching the `exclude` list are also excluded.
+Element masking has two concepts, _including_ and _excluding_. By default, all elements are included. If any elements are defined in the mask's `include` list, then **only matching** elements are included. Then, any elements matching the `exclude` list are also excluded.
 
 An example of a use of exclusion masks is when there are classes which are subject to heavy reflection, for instance, field name introspection when using Java serializables or something like Gson.
 
@@ -69,7 +69,7 @@ mask:
 
 ### Matching Rules
 
-`include` and `exclude` are lists of *matching rules*. This is a simple concept:
+`include` and `exclude` are lists of _matching rules_. This is a simple concept:
 
 - If the rule ends with `/`, it will match anything starting with the rule. For instance, the rule `path/rule/` matches `path/rule/one`, `path/rule/two`, but not `anything/else/asdf`
 - If the rule ends with `*`, it will act as a wildcard. For instance, the rule `wildcard/rule*` matches `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, but not `wildcard/anythingelse`
@@ -80,6 +80,7 @@ mask:
 Flags are simple boolean toggles to change obfuscation behaviour.
 
 Currently, Paramorphism has the following flags implemented:
+
 - `corruption`
 - `anti_decompression`
 - `kotlin`
@@ -121,6 +122,7 @@ field_access_indirection:
 ```
 
 The following are the currently-existing strategies in Paramorphism:
+
 - `debug_info_scrubbing`
 - `kotlin_metadata_scrubbing`
 - `kotlin_intrinsics_concealment`
@@ -152,6 +154,7 @@ name_generation:
 ### Dictionaries
 
 There are currently four different dictionaries in Paramorphism:
+
 - `alphabet`
 - `alphabet_upper`
 - `java_keywords`

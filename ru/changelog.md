@@ -2,25 +2,25 @@
 
 ## 1.2-beta
 
-- Fixed an issue where directories of libraries wouldn't be registered under Windows.
-- Add a configuration value `name_generation.shuffle` to toggle shuffling of name generation dictionaries.
+- Исправлена ​​ошибка, из-за которой каталоги библиотек не регистрировались под Windows.
+- Добавьте значение конфигурации `name_generation.shuffle`, чтобы включить перемешивание словарей генерации имен.
 
 ```yml
 name_generation:
-  shuffle: false # Disable shuffling
+  shuffle: false # Отключить перемешивание
 ```
 
 ## 1.1-beta-hotfix
 
-- Fixed a `VerifyError` when running a JAR that was remapped using a dictionary that has inflation set. (This actually happened to Paramorphism itself)
-- Fixed a potential access violation when using the strategies 'Method Call Indirection' or 'Field Access Indirection'
+- Исправлено `VerifyError` при запуске JAR-файла, который был переназначен с использованием словаря с установленной инфляцией. (на самом деле это произошло как раз с самим Paramorphism)
+- Исправлено потенциальное нарушение доступа при использовании стратегий 'Method Call Indirection' (Переадресация вызова метода) или 'Field Access Indirection' (Переадресация доступа к полю)
 
 ## 1.1-beta
 
-- Name generation dictionaries are now defined in the same manner as prefixes and suffixes.
+- Словари генерации имен теперь определяются так же, как префиксы и суффиксы.
 
 ```yml
-# Old:
+# Старые:
 name_generation:
   dictionaries:
     - alphabet
@@ -28,26 +28,26 @@ name_generation:
     - alphabet
     - alphabet
 
-# New:
+# Новые:
 name_generation:
   dictionaries:
     all: alphabet
     classes: enterprise
 ```
 
-- **Hotfix:** Methods in annotation classes are no longer remapped.
-- The deterministic random seed can be altered using the `random_offset` config entry.
-- Name generation dictionaries are now shuffled. A way to enable/disable this will come in 1.2-beta.
-- The update checker has been slightly tweaked.
-- There is a new strategy: Field Access Indirection, which obscures field reads/writes to external classes.
+- **Hotfix:** Методы в классах с аннотациями больше не переопределяются.
+- Детерминированное случайное начальное число может быть изменено с помощью записи конфигурации `random_offset`.
+- Словари генерации имен теперь тасуются. Возможность отключить данный функционал появится в версии 1.2-beta.
+- Проверка обновлений была слегка подправлена.
+- Существует новая стратегия: Field Access Indirection, которая скрывает поля чтения / записи во внешние классы.
 
 ## 1.0-beta
 
-This is a **complete** rewrite. Upgrading from b0.14 to 1.0-beta is not advised until the documentation is made up-to-date.
+Это **полностью** переписанное приложение. Обновление с версии b0.14 до 1.0-beta не рекомендуется, пока документация не будет обновлена.
 
-- **Remapping is now much more robust** - Almost all applications that do not perform self-introspection can now be obfuscated without affecting functionality.
-- The version numbering system has been redesigned: b0.x is now 1.x-beta.
-- Libraries can now be addressed using maven specifiers
-- Obfuscation strategies can now have individual element masks
-- Mapping name generation now supports global prefixes and suffixes per element type
-- Support for custom dictionaries has temporarily been removed
+- **Ремаппинг стал намного надежнее** - Почти все приложения, которые не используют функцию рефлексии, теперь могут быть обфусцированны без ущерба для функциональности.
+- Система нумерации версий была переработана из b0.x в 1.x-beta.
+- Теперь к библиотекам можно обращаться с помощью спецификаторов maven.
+- Стратегии обфускации теперь могут иметь индивидуальные маски элементов.
+- Генерация имен сопоставления теперь поддерживает глобальные префиксы и суффиксы для каждого типа элемента.
+- Поддержка пользовательских словарей временно удалена
