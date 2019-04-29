@@ -2,9 +2,11 @@
 
 ## Ввод & Вывод
 
-`input` определяет путь, где может быть найден скомпилированный файл, в то время как`output` определяет, куда куда данный файл после обфускации будет сохранен.
+`input` содержит путь, где находится ваш скомпилированный файл, в то время как `output` содержит путь, куда файл после обфускации будет сохранен.
 
 These paths are either relative to the location of the configuration file or absolute, depending on if the class starts with an absolute base path (e.g. `/` on sane operating systems, or a drive letter Ã la `C:/` on Windows).
+
+Эти пути могут быть как относительными, в зависимости от того, где находится лаунчер, так и абсолютными, в зависимости от того, начинается ли класс с абсолютного базового пути (например, `/` в нормальных операционных системах или буква диска à la `C:/` в Windows).
 
 **Пример:**
 
@@ -15,9 +17,9 @@ output: obfuscated-application.jar
 
 ## Библиотеки
 
-There are two ways to define libraries with Paramorphism: `libraries` and `maven_libraries`. `libraries` is a simple list of JAR files (or directories of JAR files), whereas `maven_libraries` is a specification of maven-like structures to use. The most common use of `maven_libraries` is the .m2 directory in the user's home.
+Есть два способа определить библиотеки с Paramorphism: параметры `libraries` и `maven_libraries`. `libraries` — это простой список файлов JAR (или каталогов файлов JAR), а `maven_libraries` - это спецификация используемых maven-подобных структур. Наиболее распространенное использование `maven_libraries` — это каталог .m2 в корневой папке пользователя.
 
-To use `libraries`, simply list the JAR files and/or directories that you wish to include. Just like `input` and `output`, these paths are relative to the location of the configuration file.
+Чтобы начать использовать `libraries`, просто перечислите JAR файлы и/или каталоги, которые вы хотите туда включить. Как и `input` и `output`, их пути находятся там же, где и путь файла конфигурации.
 
 **Пример: `libraries`**
 
@@ -66,51 +68,55 @@ mask:
     - com/example/myproject/config/ConfigurationJSONBean
 ```
 
-### Matching Rules
+### Правила соответствий
 
-`include` and `exclude` are lists of _matching rules_. This is a simple concept:
+`include` и `exclude` являются списками параметра _matching rules_. Это довольно простая концепция:
 
-- If the rule ends with `/`, it will match anything starting with the rule. For instance, the rule `path/rule/` matches `path/rule/one`, `path/rule/two`, but not `anything/else/asdf`
-- If the rule ends with `*`, it will act as a wildcard. For instance, the rule `wildcard/rule*` matches `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, but not `wildcard/anythingelse`
-- Otherwise, the rule matches anything identical to itself.
+- Если правило заканчивается на `/`, оно будет соответствовать любому, начинающемуся с правила. Например, правилу `path/rule/` соответствует `path/rule/one`, `path/rule/two`, однако `any/else/asdf`, уже нет.
+
+- Если правило заканчивается на `*`, оно будет действовать как пустой, или любой другой знак и их безграничное количество. Например, правилу `wildcard/rule*` соответствует `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, но уже не соответствует `wildcard/everythingelse`
+
+- В противном случае правило соответствует чему-либо идентичному самому себе.
 
 ## Флаги
 
-Flags are simple boolean toggles to change obfuscation behaviour.
+Флаги — это простые переменные, типа 'boolean' для изменения работы алгоритма обфускатора.
 
-Currently, Paramorphism has the following flags implemented:
+В настоящее время в Paramorphism реализованы следующие флаги:
 
 - `corruption`
 - `anti_decompression`
 - `kotlin`
 
-### Corruption
+### Искажение (Corruption)
 
-The 'corruption' flag instructs the obfuscator to emit a JAR file that is technically invalid, but executes anyway due to Java's lenient JAR parsing.
+Флаг 'corruption' указывает обфускатору выдавать файл JAR, который технически недействителен, но выполняется в любом случае из-за снисходительного парсинга JAR файла.
 
-With this flag, most analysis tools are rendered non-functional, with the exception of those custom-made for Paramorphism obfuscation.
+С данным флагом, большинство инструментов анализа оказываются нерабочими, за исключением тех, которые специально созданы для обфускации Paramorphism.
 
 ### Анти-Декомпрессия
 
-The 'anti decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
+Флаг 'anti decompression' пытается пытается обеспечить гарантию того, что отдельные классы не могут быть извлечены из файла JAR для анализа.
 
 ### Kotlin
 
-The 'kotlin' flag instructs the obfuscator to enable specific obfuscation strategies for the Kotlin programming language. For example, a Kotlin-specific strategy might strip out debugging information that is unique to the Kotlin compiler.
+Флаг 'kotlin' указывает обфускатору включить конкретные стратегии запутывания для языка программирования Kotlin. Например, специфичная для Kotlin стратегия может исключить отладочную информацию, уникальную для компилятора Kotlin.
 
-Presently, use of the `kotlin` flag can corrupt behaviour in programs that make use of the `kotlin-reflect` library. (Please note that regular Java reflection is unaffected by the flag.)
+В настоящее время, использование флага `kotlin` может испортить работу программ, использующих библиотеку `kotlin-reflect`. (Обратите внимание, что стандартная рефлекция Java не зависит от флага).
 
 ## Стратегии
 
-Individual strategies can be configured in Paramorphism.
+В Paramorphism могут быть настроены индивидуальные стратегии.
 
-All strategies have at least two configurable properties: `enabled` and `mask`
+Все стратегии имеют как минимум два настраиваемых параметра: `enabled` и `mask`
 
 `enabled` determines whether the obfuscation strategy will be used in the obfuscation of the target program, and is a boolean. The default value of `enabled` is true for all obfuscation strategies, but some obfuscation strategies are gated by [configuration flags](#flags).
 
-`mask` is a local specific mask that defines which classes the obfuscation strategy will be applied to. Please note that exclusions from the global mask cannot be overridden by an inclusion from a local mask.
+`enabled` определяет, будет ли стратегия обфускатора использоваться при обфускации вышей программы, и является булевым значением. Значение по умолчанию «enabled» имеет значение true для всех стратегий обфускатора, но некоторые стратегии управляются с помощью [конфигурационных флагов](#Флаги).
 
-Using the strategy 'Field Access Indirection' as an example, we set 'enabled' to true, and disable the strategy for a performance-critical class:
+`mask` – это специфичная маска, которая определяет, к каким классам будет применяться стратегия обфускатора. Обратите внимание, что исключения из глобальной маски не могут быть отменены включением из локальной маски.
+
+Используя стратегию 'Field Access Indirection' в качестве примера, мы устанавливаем для 'enabled' значение true и отключаем стратегию для класса с высокой производительностью:
 
 ```yml
 field_access_indirection:
@@ -120,7 +126,7 @@ field_access_indirection:
       - com/example/project/ASuperPerformanceCriticalClass
 ```
 
-The following are the currently-existing strategies in Paramorphism:
+Ниже приведены стратегии которые уже присутствуют в Paramorphism:
 
 - `debug_info_scrubbing`
 - `kotlin_metadata_scrubbing`
@@ -130,15 +136,15 @@ The following are the currently-existing strategies in Paramorphism:
 - `field_access_indirection`
 - `string_indirection`
 
-As more strategies are implemented, it is likely that some will develop their own specific configurable parameters.
+По мере реализации большего числа стратегий вполне вероятно, что некоторые разработают свои собственные параметры.
 
-## Name Generation
+## Генерация имен
 
-The name generator is used throughout the obfuscator, but its most obvious use is in the remapper. The name generator operates on four types of elements: Packages, classes, fields, and methods.
+Генератор имен используется во всем обфускаторе, но его наиболее очевидное применение - в ремаппинге. Генератор имен работает с четырьмя типами элементов: пакеты, классы, поля и методы.
 
-There are three different name generation facets: Dictionaries, prefixes, and suffixes.
+Существует три различных параметра генерации имен: словари, префиксы и суффиксы.
 
-A facet can be configured to act upon any of the element types like so:
+Параменры можно настроить так, чтобы он воздействовал на любой из типов элементов следующим образом:
 
 ```yml
 name_generation:
@@ -146,7 +152,7 @@ name_generation:
     all: ...
     packages: ...
     classes: ...
-    # fields: ... # Поскольку поля опущены, его значение по умолчанию равно 'all'
+    # fields: ... # Поскольку мы опустили данное поле, его значение по умолчанию равно 'all'
     methods: ...
 ```
 
@@ -186,6 +192,6 @@ name_generation:
     fields: "[]"
 ```
 
-### Inflation
+### Обесценивание
 
 К тому же, генератор имет может принимать параметр 'inflation'. Это позволяет обфускатуору генерировать определенное количество случайных дополнительных частей имени, в зависимости от значения параметра 'inflation'. Например, имя 'a' с параметром 'inflation' равным 0, может быть сгенерировано как 'fdgjia' с параметром 'inflation' равным 5.
