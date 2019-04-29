@@ -2,19 +2,18 @@ module.exports = {
   title: "Paramorphism",
 
   locales: {
-    "/en/": {
+    "/": {
       lang: "en-GB",
       title: "Paramorphism Documentation",
-      description:
-        "A fast, flexible, and modern obfuscator for Java and Kotlin."
+      description: "A fast, flexible, and modern obfuscator for Java and Kotlin."
     },
 
-    "/es/": {
+    /* "/es/": {
       lang: "es-ES",
       title: "Paramorphism Documentaciones",
       description:
-        "Un ofuscador rรกpido, flexible y moderno para Java y Kotlin."
-    },
+        "Un ofuscador rápido, flexible y moderno para Java y Kotlin."
+    }, */
 
     "/ru/": {
       lang: "ru-RU",
@@ -25,7 +24,9 @@ module.exports = {
 
   themeConfig: {
     locales: {
-      "/en/": {
+      "/": {
+        label: "English",
+
         nav: [
           {
             text: "Paramorphism",
@@ -36,7 +37,9 @@ module.exports = {
         sidebar: ["/en/changelog", "/en/", "/en/configuration"]
       },
 
-      "/es/": {
+      /* "/es/": {
+        label: "Español",
+
         nav: [
           {
             text: "Paramorphism",
@@ -45,18 +48,20 @@ module.exports = {
         ],
 
         sidebar: ["/es/"]
-      }
-    },
+      } */
 
-    "/ru/": {
-      nav: [
-        {
-          text: "Paramorphism",
-          link: "https://paramorphism.serenity.enterprises/"
-        }
-      ],
+      "/ru/": {
+        label: "Русский",
 
-      sidebar: ["/ru/changelog", "/ru/", "/ru/configuration"]
+        nav: [
+          {
+            text: "Paramorphism",
+            link: "https://paramorphism.serenity.enterprises/"
+          }
+        ],
+
+        sidebar: ["/ru/changelog", "/ru/", "/ru/configuration"]
+      },
     },
 
     sidebarDepth: 4
