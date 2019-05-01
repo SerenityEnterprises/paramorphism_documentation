@@ -108,8 +108,6 @@ mask:
 
 Все стратегии имеют как минимум два настраиваемых параметра: `enabled` и `mask`
 
-`enabled` determines whether the obfuscation strategy will be used in the obfuscation of the target program, and is a boolean. The default value of `enabled` is true for all obfuscation strategies, but some obfuscation strategies are gated by [configuration flags](#flags).
-
 `enabled` определяет, будет ли стратегия обфускатора использоваться при обфускации вышей программы, и является булевым значением. Значение по умолчанию «enabled» имеет значение true для всех стратегий обфускатора, но некоторые стратегии управляются с помощью [конфигурационных флагов](#Флаги).
 
 `mask` – это специфичная маска, которая определяет, к каким классам будет применяться стратегия обфускатора. Обратите внимание, что исключения из глобальной маски не могут быть отменены включением из локальной маски.
