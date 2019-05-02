@@ -104,7 +104,6 @@ flags:
 目前，使用该kotlin标志可以破坏使用该kotlin-reflect库的程序中的行为。（请注意，常规Java反射不受Flag的影响。）
 
 ## 策略
-//翻译备注：如果你不进行定义，这些策略会全部开启
 
 单个策略可以配置在Paramorphism中.
 
@@ -114,18 +113,18 @@ flags:
 
 “mask”是一个局部特定的掩码，它定义了将应用混淆策略的类。请注意，全局掩码中的`exclude`不能被本地掩码中的`include`覆盖。
 
-Using the strategy 'Field Access Indirection' as an example, we set 'enabled' to true, and disable the strategy for a performance-critical class:
+以策略“Field Access Indirection”为例，我们将“enabled”设置为true，并禁用性能关键类的策略:
 
 ```yml
 field_access_indirection:
-  enabled: true # Here for demonstration purposes; but true is the default
+  enabled: true # 此处用于演示，但默认为true
   mask:
     exclude:
       - com/example/project/ASuperPerformanceCriticalClass
 ```
 
-The following are the currently-existing strategies in Paramorphism:
-
+目前可使用的Paramorphism策略:
+`翻译备注：如果你不进行定义，这些策略会全部开启`
 - `debug_info_scrubbing`
 - `kotlin_metadata_scrubbing`
 - `kotlin_intrinsics_concealment`
@@ -133,6 +132,7 @@ The following are the currently-existing strategies in Paramorphism:
 - `method_call_indirection`
 - `field_access_indirection`
 - `string_indirection`
+
 
 As more strategies are implemented, it is likely that some will develop their own specific configurable parameters.
 
