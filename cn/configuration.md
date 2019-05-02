@@ -52,9 +52,9 @@ maven_libraries:
 
 元素掩码定义在混淆传递中包含和排除哪些类。全局掩码由mask配置文件中的条目定义，并控制任何混淆策略可以触及的类。
 
-Element masking has two concepts, _including_ and _excluding_. By default, all elements are included. If any elements are defined in the mask's `include` list, then **only matching** elements are included. Then, any elements matching the `exclude` list are also excluded.
+元素掩码有两个概念，包括和排除_。默认情况下，所有元素都包括在内。如果在掩码的`exclude`列表中定义了任何元素，那么*只包含匹配的*元素。然后，与`exclude`列表相匹配的任何元素也被排除在外。
 
-An example of a use of exclusion masks is when there are classes which are subject to heavy reflection, for instance, field name introspection when using Java serializables or something like Gson.
+使用排除掩码的一个例子是当存在严重反射的类时，例如，当使用Java可序列化或类似Gson时的字段名称内省。
 
 ```yml
 mask:
@@ -66,13 +66,13 @@ mask:
     - com/example/myproject/config/ConfigurationJSONBean
 ```
 
-### Matching Rules
+### Matching Rules(规则匹配)
 
-`include` and `exclude` are lists of _matching rules_. This is a simple concept:
+`include`和`exclude`是匹配规则的列表,这是一个简单的概念：
 
-- If the rule ends with `/`, it will match anything starting with the rule. For instance, the rule `path/rule/` matches `path/rule/one`, `path/rule/two`, but not `anything/else/asdf`
-- If the rule ends with `*`, it will act as a wildcard. For instance, the rule `wildcard/rule*` matches `wildcard/rule/one`, `wildcard/ruletwothreefour/five`, but not `wildcard/anythingelse`
-- Otherwise, the rule matches anything identical to itself.
+- 如果规则以`/`结尾，它将匹配以规则开头的任何内容
+- 如果规则以`*`结尾，它将充当通配符 例如：规则`wildcard/rule*`匹配`wildcard/rule/one`，`wildcard/ruletwothreefour/five`但不匹配`wildcard/anythingelse`
+- 否则，该规则将匹配任何与其本身相同的内容。
 
 ## Flags
 
