@@ -4,6 +4,7 @@
 
 - 修复了一个库目录不能在Windows下注册的问题。
 - 添加配置值`name_generation.shuffle`以切换名称生成词典的随机排列顺序
+//用于切换name生成字典的shuffling?
 
 ```yml
 name_generation:
