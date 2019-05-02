@@ -14,6 +14,12 @@ module.exports = {
       description:
         "Un ofuscador rápido, flexible y moderno para Java y Kotlin."
     }, */
+    
+    "/nl/": {
+      lang: "nl-NL",
+      title: "Documentatie van Paramorphism",
+      // TODO: Description in Dutch (my Dutch is really bad)
+    },
 
     "/ru/": {
       lang: "ru-RU",
@@ -62,6 +68,19 @@ module.exports = {
 
         sidebar: ["/ru/changelog", "/ru/", "/ru/configuration"]
       },
+      
+      "/nl/": {
+        label: "Nederlands",
+        
+        nav: [
+          {
+            text: "Paramorphism",
+            link: "https://paramorphism.serenity.enterprises/"
+          }
+        ],
+        
+        sidebar: ["/nl/changelog", "/nl/", "/nl/configuration"]
+      }
     },
 
     sidebarDepth: 4
