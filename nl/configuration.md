@@ -44,7 +44,7 @@ maven_libraries:
     - "com.example:proprietary-library:1.0.0"
 ```
 
-:::waarschuwing
+:::warning
 Om de hernoeming van bestanden goed te laten functioneren, moeten alle libraries 
 die worden gebruikt door de applicatie aangegeven worden in de configuratie.
 :::
