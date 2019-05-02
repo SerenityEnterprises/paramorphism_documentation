@@ -17,7 +17,7 @@ output: obfuscated-application.jar
 
 使用Paramorphism定义库有两种方法：`libraries`和`maven_libraries`  libraries可以是一个简单的JAR文件（或者是JAR文件的目录），而maven_librarie一般来说在user文件夹中的.m2目录
 
-要使用`libraries`，只需列出要包含的JAR文件或目录。就像`input`和`output`一样，这些路径是相对于配置文件的位置的。
+要使用`libraries`，只需列出要包含的JAR文件或目录。就像`input`和`output`一样，这些路径是相对于配置文件的位置。
 
 **示例: `libraries`**
 
@@ -103,9 +103,10 @@ flags:
 
 目前，使用该kotlin标志可以破坏使用该kotlin-reflect库的程序中的行为。（请注意，常规Java反射不受Flag的影响。）
 
-## Strategies
+## 策略
+//翻译备注：如果你不进行定义，这些策略会全部开启
 
-Individual strategies can be configured in Paramorphism.
+单个策略可以配置在Paramorphism中.
 
 All strategies have at least two configurable properties: `enabled` and `mask`
 
