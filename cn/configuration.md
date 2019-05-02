@@ -134,15 +134,18 @@ field_access_indirection:
 - `string_indirection`
 
 
-As more strategies are implemented, it is likely that some will develop their own specific configurable parameters.
+随着更多策略的实施，一些人很可能会开发自己特定的可配置参数
 
-## Name Generation
+## Name Generation（名称生成）
 
-The name generator is used throughout the obfuscator, but its most obvious use is in the remapper. The name generator operates on four types of elements: Packages, classes, fields, and methods.
+名称生成器在整个混淆器中使用，但其最明显的用途是在重组器中。名称生成器对四种类型的元素进行操作：包、类、字段和方法。
+`翻译备注:随机包名 随机方法名 随机类名 随机字段 示例: 包名a.b.c.d`
 
-There are three different name generation facets: Dictionaries, prefixes, and suffixes.
+有三个不同的名称自定义方式：字典、前缀与后缀。
 
-A facet can be configured to act upon any of the element types like so:
+可以配置任意一个方面方面来处理任何元素类型，如下所示：
+
+
 
 ```yml
 name_generation:
@@ -150,7 +153,7 @@ name_generation:
     all: ...
     packages: ...
     classes: ...
-    # fields: ... # Since fields is omitted, its value defaults to the value of 'all'
+    # fields: ... # 由于字段被省略，其值默认为“all”的值。
     methods: ...
 ```
 
