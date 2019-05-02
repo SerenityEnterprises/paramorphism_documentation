@@ -76,29 +76,32 @@ mask:
 
 ## Flags
 
-Flags are simple boolean toggles to change obfuscation behaviour.
+Flags 使用false/true改变混淆行为
 
-Currently, Paramorphism has the following flags implemented:
+目前，有下列flag可供使用：
 
 - `corruption`
 - `anti_decompression`
 - `kotlin`
+```yml
+flags: 
+    corruption: false
+    anti_decompression: false
+    kotlin: false
+```
+
 
 ### Corruption
-
-The 'corruption' flag instructs the obfuscator to emit a JAR file that is technically invalid, but executes anyway due to Java's lenient JAR parsing.
-
-With this flag, most analysis tools are rendered non-functional, with the exception of those custom-made for Paramorphism obfuscation.
-
+把class集成为（encrypted_data / name），让大部分反编译器无法编译，除了那些为Paramorphism混淆定制的分析工具
 ### Anti-Decompression
 
-The 'anti decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
+确保不能从JAR文件中提取单个类进行分析。
 
 ### Kotlin
 
-The 'kotlin' flag instructs the obfuscator to enable specific obfuscation strategies for the Kotlin programming language. For example, a Kotlin-specific strategy might strip out debugging information that is unique to the Kotlin compiler.
+`kotlin`混淆器为Kotlin编程语言启用特定的混淆策略。例如，特定于Kotlin的策略可能会删除Kotlin编译器独有的调试信息。
 
-Presently, use of the `kotlin` flag can corrupt behaviour in programs that make use of the `kotlin-reflect` library. (Please note that regular Java reflection is unaffected by the flag.)
+目前，使用该kotlin标志可以破坏使用该kotlin-reflect库的程序中的行为。（请注意，常规Java反射不受Flag的影响。）
 
 ## Strategies
 
