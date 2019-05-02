@@ -157,10 +157,10 @@ name_generation:
     methods: ...
 ```
 
-### Dictionaries
+### 混淆字典
 
-There are currently four different dictionaries in Paramorphism:
-
+目前在Paramorphism中有下面四种字典:
+`翻译备注:alphabet(字母表) alphabet_upper(大写字母表) java_keywords(java数据类型如：int long char等等) enterprise(公司名)`
 - `alphabet`
 - `alphabet_upper`
 - `java_keywords`
@@ -173,9 +173,9 @@ name_generation:
     classes: enterprise
 ```
 
-### Prefixes
+### Prefixes(前缀)
 
-Prefixes are a constant string applied to the start of every generated name:
+前缀是一个常量字符串，应用于每个生成名称的开头：
 
 ```yml
 name_generation:
@@ -183,9 +183,9 @@ name_generation:
     classes: MyProjectClass
 ```
 
-### Suffixes
+### Suffixes(后缀)
 
-Suffixes are a constant string applied to the end of every generated name:
+后缀是一个常量字符串，应用于每个生成名称的末尾：
 
 ```yml
 name_generation:
@@ -193,6 +193,7 @@ name_generation:
     fields: "[]"
 ```
 
-### Inflation
+### Inflation参数
 
-In addition, the name generator can take an 'inflation' parameter. This generates a number of random extra name segments depending on the inflation value. For instance, the name 'a' with inflation 0 could be generated as 'fdgjia' with inflation 5.
+此外，名称生成器可以采用“inflation”参数。这会根据通货膨胀值生成许多随机的额外名称段。例如，通胀率为0的“a”可以生成为通胀率为5的“fdgjia”。
+//待补充
