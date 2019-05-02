@@ -108,11 +108,11 @@ flags:
 
 单个策略可以配置在Paramorphism中.
 
-All strategies have at least two configurable properties: `enabled` and `mask`
+所有策略都至少有两个可配置属性:`enabled`和`mask`
 
-`enabled` determines whether the obfuscation strategy will be used in the obfuscation of the target program, and is a boolean. The default value of `enabled` is true for all obfuscation strategies, but some obfuscation strategies are gated by [configuration flags](#flags).
+“enabled”决定是否在目标程序的混淆中使用混淆策略，并且是一个布尔值。默认值“enabled”适用于所有的混淆策略，但是有些混淆策略是由[Flags]控制的。(#flags).
 
-`mask` is a local specific mask that defines which classes the obfuscation strategy will be applied to. Please note that exclusions from the global mask cannot be overridden by an inclusion from a local mask.
+“mask”是一个局部特定的掩码，它定义了将应用混淆策略的类。请注意，全局掩码中的`exclude`不能被本地掩码中的`include`覆盖。
 
 Using the strategy 'Field Access Indirection' as an example, we set 'enabled' to true, and disable the strategy for a performance-critical class:
 
