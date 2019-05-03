@@ -21,7 +21,6 @@ Here is an example configuration for a basic 'Hello, World!' application:
 input: path/to/my/helloworld.jar
 output: path/to/my/obfuscated-helloworld.jar
 
-# We exclude the main HelloWorld class from being remapped
 # 我们排除了主类 HelloWorld.class，
 # 以便防止 MANIFEST.MF 内的 'Main-Class'
 # 指向一个无效的类
