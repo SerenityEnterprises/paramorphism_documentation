@@ -12,8 +12,8 @@ name_generation:
 
 ## 1.1-beta-hotfix
 
-- 修复了 `VerifyError` 当运行一个使用重命名 (Remapper) 并开启 inflation 的已混淆文件. (那甚至也发生于Paramorphism本身)
-- 修复了使用策略时潜在的访问冲突问题 ('Method Call Indirection' 或 'Field Access Indirection')
+- 修正了在使用Inflation字典时重新映射的jar出现`verify error`
+- 修复了使用策略“方法间接调用"(Method Call Indirection)或“字段间接访问”(Field Access Indirection)时的潜在冲突
 
 ## 1.1-beta
 
@@ -45,9 +45,12 @@ name_generation:
 
 这是一个 **完全** 的重写. 在文档更新之前，不建议从b0.14升级到1.0-beta
 
-- **重命名(Remapper) 现在更加强大** - 几乎所有不执行内省的应用程序现在都可以进行模糊处理，并且不会影响任何功能。
-- 版本编号系统已重新设计: b0.x ，目前是 1.x-beta.
-- 现在可以使用 maven说明符 来添加库
-- 混淆策略现在具有单独的元素掩码
-- 重命名(Renammer) 生成现在支持每个元素类型的全局前缀和后缀
+
+重写，在文档更新之前，不建议从b0.14升级到1.0-beta。
+
+- **重新映射现在更加强大**-几乎所有符合javaBean规范的应用程序现在都可以在不影响功能的情况下进行混淆
+- 版本编号已经重新设定：b0.x已修正为1.x-beta。
+- 现在可以使用maven来处理库。
+- 混淆策略现在可以具有单独的masks:
+- 现在支持每个元素类型的全局前缀和后缀
 - 暂时删除了对自定义词典的支持
