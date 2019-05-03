@@ -1,6 +1,6 @@
 # 配置
 
-## 输入 & 输入
+## 输入 & 输出
 
 `input` 可以定义目标混淆文件的路径，而 `output` 则模糊定义已混淆文件的输出路径。
 
@@ -176,7 +176,7 @@ name_generation:
     classes: MyProjectClass
 ```
 
-### Suffixes
+### 后缀
 
 后缀是应用于每个生成的名称末尾的常量字符串：
 
@@ -186,6 +186,6 @@ name_generation:
     fields: "[]"
 ```
 
-### Inflation
+### 膨胀(Inflation)
 
 此外，名称生成器可以采用“膨胀”参数。 这会根据膨胀值生成许多随机额外名称段。 例如，膨胀的名称“a”可以生成为“fdgjia”，膨胀率为5。
