@@ -12,9 +12,9 @@ Paramorphism 需要使用配置文件来运行。
 java -jar paramorphism.jar path/to/config
 ```
 
-Paramorphism 支持配置文件的两种格式: YAML 和 JSON. 在本文档中，我们将使用 YAM文本 作为示例配置。
+Paramorphism 支持配置文件的两种格式: YAML 和 JSON. 在本文档中，我们将使用 YAM文件 作为示例配置。
 
-举个例子，这里是一个基础的 “Hello, World!” 程序配置。
+下面是一个Hello, World的示例配置:
 
 ```yml
 input: path/to/my/helloworld.jar
@@ -35,14 +35,14 @@ remapper:
 
 ## 局限性
 
-Java 混淆通常可以阻止程序内的部分功能。
+Java混淆通常会抑制程序中的某些功能。
 
-例如, 重命名(name remapper) 可以破坏调用硬编码元素名称(hardcode element names)的反射。
+例如，名称映射(remapper)可以中断硬编码元素名称的反射调用。
 
-又例如， `Class.forName("com.example.HelloWorldPrinterFactory")` 在混淆之后可以返回 `ClassNotFoundException`, 因为 `HelloWorldPrinterFactory` 将会被重命名为类似于 `a.a.c`
+例如 `Class.forName("com.example.HelloWorldPrinterFactory")`可以在混淆之后返回`ClassNotFoundException`,因为`HelloWorldPrinterFactory`将被命名为`a.a.c`之类的名称。
 
-当您开发的程序被混淆后，请进行全面的测试以验证它的可用性，防止造成损失。
+在开发最终将被混淆的应用程序时，请记住这一点，并在混淆后执行彻底的测试。
 
-## 举报问题
+## 反馈问题
 
-如果你发现了本混淆器的问题，请上报它。 [GitHub issue tracker.](https://github.com/SerenityEnterprises/paramorphism-issues/)
+如果您发现混淆器有问题，请在[GitHub问题跟踪器](https://github.com/SerenityEnterprises/paramorphism-issues/)上反馈
