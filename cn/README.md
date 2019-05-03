@@ -14,7 +14,6 @@ java -jar paramorphism.jar path/to/config
 
 Paramorphism 支持配置文件的两种格式: YAML 和 JSON. 在本文档中，我们将使用 YAM文本 作为示例配置。
 
-Here is an example configuration for a basic 'Hello, World!' application:
 举个例子，这里是一个基础的 “Hello, World!” 程序配置。
 
 ```yml
