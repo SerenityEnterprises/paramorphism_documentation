@@ -15,7 +15,7 @@ output: obfuscated-application.jar
 
 ## 资源库
 
-这里有两种方式来定义 Paramorphism混淆 需要使用的资源库: `libraries` and `maven_libraries`. `libraries` 是一个简单的JAR文件 (或是包含JAR文件的目录), 而 `maven_libraries` 是一种类似maven结构的规范。 `maven_libraries`最常见的用途是用户家中的.m2目录。
+使用Paramorphism定义库有两种方法：`libraries`和`maven_libraries`  libraries可以是一个简单的JAR文件（或者是JAR文件的目录），而maven_librarie一般来说在user文件夹中的.m2目录
 
 使用 `libraries`, 只需要您列出你需要的JAR文件或一个目录. 就像`input` 和 `output`, 路径相对于配置文件的位置。
 
@@ -53,7 +53,7 @@ maven_libraries:
 
 元素掩码定义在混淆传递中包含和排除哪些元素。 全局掩码由配置文件中的`mask`条目定义，并控制任何混淆策略可以触及的类。
 
-元素屏蔽有两个概念，_including_和_excluding_。 默认情况下，包含所有元素。 如果在掩码的“include”列表中定义了任何元素，则**仅包含匹配的**元素。 同时也排除与“exclude”列表匹配的任何元素。
+元素屏蔽有两个概念，_including_和_excluding_。 默认情况下，包含所有元素。 如果在掩码的“include”列表中定义了任何元素，则**仅包含匹配的**元素。 然后，与`exclude`列表相匹配的任何元素也被排除在外。
 
 使用排除掩码的反射 的类时，例如，当使用Java可序列化 或 类似Gson时的字段名称内省。
 
@@ -102,25 +102,26 @@ mask:
 
 ## 策略
 
-可以在Paramorphism中配置各个策略。
+单个策略可以配置在Paramorphism中.
 
-所有策略都至少有两个可配置属性：`enabled`和`mask`
+所有策略都至少有两个可配置属性:`enabled`和`mask`
 
-`enabled`确定混淆策略是否将用于目标程序的混淆，并且是布尔值。 对于所有混淆策略，“enabled”的默认值为true，但是某些混淆策略由[configuration flags]（#flags）选通。
+“enabled”决定是否在目标程序的混淆中使用混淆策略，并且是一个布尔值。默认值“enabled”适用于所有的混淆策略，但是有些混淆策略是由[Flags]控制的。(#flags).
 
-`mask`是一个本地特定的掩码，它定义了混淆策略将应用于哪些类。 请注意，全局掩码中的排除项不能通过本地掩码中的包含来覆盖。
+“mask”是一个局部特定的掩码，它定义了将应用混淆策略的类。请注意，全局掩码中的`exclude`不能被本地掩码中的`include`覆盖。
 
-以策略“Field Access Indirection”为例，我们将'enabled'设置为true，并禁用性能关键类的策略：
+以策略“Field Access Indirection”为例，我们将“enabled”设置为true，并禁用性能关键类的策略:
 
 ```yml
 field_access_indirection:
-  enabled: true # 这里用于演示，true 同时也是默认值
+  enabled: true # 此处用于演示，但默认为true
   mask:
     exclude:
       - com/example/project/ASuperPerformanceCriticalClass
 ```
 
-以下是Paramorphism中现有的策略：
+目前可使用的Paramorphism策略:
+`翻译备注：如果你不进行定义，这些策略会全部开启`
 
 - `debug_info_scrubbing`
 - `kotlin_metadata_scrubbing`
@@ -134,11 +135,12 @@ field_access_indirection:
 
 ## 名称生成(Name Generation)
 
-名称生成器在整个混淆器中使用，但最明显的用途是在 重命名(Remapper) 中。 名称生成器对四种类型的元素进行操作：包，类，字段和方法。
+名称生成器在整个混淆器中使用，但其最明显的用途是在重新映射 (Remapper) 中。名称生成器对四种类型的元素进行操作：包、类、字段和方法。
+`翻译备注:随机包名 随机方法名 随机类名 随机字段 示例: 包名a.b.c.d`
 
-有三个不同的名称生成方面：字典，前缀和后缀。
+有三个不同的名称自定义方式：字典、前缀与后缀。
 
-可以将构面配置为对任何元素类型执行操作，如下所示：
+可以配置任意一个方面方面来处理任何元素类型，如下所示：
 
 ```yml
 name_generation:
@@ -153,6 +155,7 @@ name_generation:
 ### 字典
 
 Paramorphism目前有四种不同的词典：
+`翻译备注:alphabet(字母表) alphabet_upper(大写字母表) java_keywords(java数据类型如：int long char等等) enterprise(公司名)`
 
 - `alphabet`
 - `alphabet_upper`
@@ -188,4 +191,5 @@ name_generation:
 
 ### 膨胀(Inflation)
 
-此外，名称生成器可以采用“膨胀”参数。 这会根据膨胀值生成许多随机额外名称段。 例如，膨胀的名称“a”可以生成为“fdgjia”，膨胀率为5。
+此外，名称生成器可以采用“inflation”参数。这会根据膨胀值生成许多随机的额外名称段。例如，膨胀率为0的“a”可以生成为膨胀率为5的“fdgjia”。
+//待补充
