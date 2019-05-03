@@ -35,11 +35,11 @@ remapper:
 
 ## 局限性
 
-Java混淆通常会抑制程序中的某些功能。
+Java混淆通常会影响程序中的某些功能。
 
 例如，名称映射(remapper)可以中断硬编码元素名称的反射调用。
 
-例如 `Class.forName("com.example.HelloWorldPrinterFactory")`可以在混淆之后返回`ClassNotFoundException`,因为`HelloWorldPrinterFactory`将被命名为`a.a.c`之类的名称。
+例如 `Class.forName("com.example.HelloWorldPrinterFactory")`在混淆之后会返回`ClassNotFoundException`,因为`HelloWorldPrinterFactory`将被命名为`a.a.c`之类的名称。
 
 在开发最终将被混淆的应用程序时，请记住这一点，并在混淆后执行彻底的测试。
 
