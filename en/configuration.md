@@ -4,7 +4,7 @@
 
 `input` defines the path where the target artifact can be found, while `output` declares where the obfuscated output will be emitted.
 
-These paths are either relative to the location of the configuration file or absolute, depending on if the class starts with an absolute base path (e.g. `/` on sane operating systems, or a drive letter à la `C:/` on Windows).
+These paths are either relative to the location of the configuration file or absolute, depending on if the class starts with an absolute base path (e.g. `/` on sane operating systems, or a drive letter Ã la `C:/` on Windows).
 
 **Example:**
 
@@ -93,7 +93,7 @@ With this flag, most analysis tools are rendered non-functional, with the except
 
 ### Anti-Decompression
 
-The 'anti decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
+The 'anti_decompression' flag tries to ensure that individual classes cannot be pulled out of the JAR file for analysis.
 
 ### Kotlin
 
