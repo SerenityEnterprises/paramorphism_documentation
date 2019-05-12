@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3-beta-hotfix
+
+- Fixed a crash when using `remapper.redirect_main` and obfuscating classes which reside in the default package.
+
 ## 1.3-beta
 
 - Paramorphism now redirects the `Main-Class` attribute of the JAR Manifest to its remapped location. This means the main class no longer needs to be excluded from the remapper. This can be disabled by setting the configuration value `remapper.redirect_main` to false.
